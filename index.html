@@ -26,7 +26,6 @@
     overflow-x: hidden;
   }
 
-  /* Noise texture overlay */
   body::before {
     content: '';
     position: fixed;
@@ -48,15 +47,12 @@
 
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-size: clamp(3rem, 8vw, 7rem);
     letter-spacing: 0.05em;
     line-height: 1;
     color: var(--ink);
   }
-
-  h1 span {
-    color: var(--accent);
-  }
+  h1 span { color: var(--accent); }
 
   .subtitle {
     font-size: 0.7rem;
@@ -76,13 +72,9 @@
     opacity: 0.6;
     line-height: 1.7;
   }
-
   .instructions strong { opacity: 1; color: var(--accent); }
 
-  main {
-    padding: 3rem;
-    max-width: 1200px;
-  }
+  main { padding: 3rem; max-width: 1300px; }
 
   .grid-label {
     font-family: 'Bebas Neue', sans-serif;
@@ -93,7 +85,6 @@
     align-items: center;
     gap: 1rem;
   }
-
   .grid-label::after {
     content: '';
     flex: 1;
@@ -101,35 +92,166 @@
     background: var(--mid);
   }
 
+  /* Page count controls */
+  .page-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .page-count-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .count-btns {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--ink);
+  }
+
+  .count-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    width: 44px;
+    height: 44px;
+    background: var(--paper);
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    transition: background 0.15s, color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .count-btn:hover { background: var(--ink); color: var(--paper); }
+  .count-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+  .count-btn:disabled:hover { background: var(--paper); color: var(--ink); }
+
+  .count-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    width: 56px;
+    text-align: center;
+    border-left: 2px solid var(--ink);
+    border-right: 2px solid var(--ink);
+    height: 44px;
+    line-height: 44px;
+    letter-spacing: 0.1em;
+  }
+
+  .page-count-note {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    opacity: 0.45;
+    font-style: italic;
+  }
+
+  /* Imposition diagram */
+  .imposition-panel {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--mid);
+    background: white;
+  }
+
+  .diagram-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .sheets-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .sheet-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .sheet-side {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .sheet-side-label {
+    font-size: 0.57rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  .mini-spread { display: flex; }
+
+  .mini-page {
+    width: 38px;
+    height: 58px;
+    border: 1px solid var(--mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--slot-bg);
+  }
+  .mini-page.accent { background: #fde8e7; border-color: var(--accent); color: var(--accent); }
+
+  .mini-fold {
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--ink) 0, var(--ink) 3px, transparent 3px, transparent 6px);
+    height: 58px;
+  }
+
+  .sheet-num {
+    font-size: 0.57rem;
+    letter-spacing: 0.08em;
+    opacity: 0.35;
+    text-align: center;
+    margin-top: 0.2rem;
+  }
+
+  /* Pages grid */
   .pages-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 1.5rem 2rem;
     margin-bottom: 3rem;
   }
 
-  .page-slot {
-    position: relative;
-  }
+  .page-slot { position: relative; }
 
   .slot-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .page-number {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: 0.1em;
   }
 
   .page-role {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.45;
+    opacity: 0.4;
   }
 
   .drop-zone {
@@ -159,23 +281,20 @@
 
   .drop-placeholder .plus {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--mid);
     line-height: 1;
     display: block;
     transition: color 0.2s;
   }
-
-  .drop-zone:hover .plus, .drop-zone.drag-over .plus {
-    color: var(--accent);
-  }
+  .drop-zone:hover .plus, .drop-zone.drag-over .plus { color: var(--accent); }
 
   .drop-placeholder p {
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--mid);
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
   }
 
   .drop-zone img {
@@ -186,98 +305,31 @@
     object-fit: cover;
     display: none;
   }
-
-  .drop-zone.has-image img {
-    display: block;
-  }
-
-  .drop-zone.has-image .drop-placeholder {
-    display: none;
-  }
+  .drop-zone.has-image img { display: block; }
+  .drop-zone.has-image .drop-placeholder { display: none; }
 
   .remove-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
     background: var(--ink);
     color: var(--paper);
     border: none;
     cursor: pointer;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 10;
     transition: background 0.15s;
   }
-
-  .drop-zone.has-image .remove-btn {
-    display: flex;
-  }
-
+  .drop-zone.has-image .remove-btn { display: flex; }
   .remove-btn:hover { background: var(--accent); }
 
   input[type="file"] { display: none; }
-
-  /* Zine layout diagram */
-  .layout-diagram {
-    margin: 0 0 3rem;
-    padding: 1.5rem;
-    border: 1px solid var(--mid);
-    background: white;
-    display: inline-block;
-  }
-
-  .diagram-title {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    opacity: 0.5;
-    margin-bottom: 1rem;
-  }
-
-  .spread {
-    display: flex;
-    gap: 0;
-    margin-bottom: 0.8rem;
-  }
-
-  .spread-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0.4;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    margin-right: 0.5rem;
-    align-self: center;
-  }
-
-  .mini-page {
-    width: 44px;
-    height: 68px;
-    border: 1px solid var(--mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    color: var(--ink);
-    background: var(--slot-bg);
-  }
-
-  .mini-page.accent { background: #fde8e7; border-color: var(--accent); color: var(--accent); }
-
-  .fold-line {
-    width: 2px;
-    background: repeating-linear-gradient(to bottom, var(--ink) 0, var(--ink) 4px, transparent 4px, transparent 8px);
-    height: 68px;
-    margin: 0;
-  }
 
   /* Export section */
   .export-section {
@@ -285,15 +337,13 @@
     padding-top: 2rem;
   }
 
-  .export-section .grid-label { margin-bottom: 1rem; }
-
   .export-info {
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     line-height: 1.8;
     opacity: 0.6;
     margin-bottom: 1.5rem;
-    max-width: 600px;
+    max-width: 640px;
   }
 
   .btn-export {
@@ -309,7 +359,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .btn-export::after {
     content: '';
     position: absolute;
@@ -318,7 +367,6 @@
     transform: translateX(-100%);
     transition: transform 0.25s ease;
   }
-
   .btn-export:hover::after { transform: translateX(0); }
   .btn-export span { position: relative; z-index: 1; }
   .btn-export:active { transform: scale(0.98); }
@@ -337,7 +385,6 @@
   @media (max-width: 700px) {
     header, main { padding: 1.5rem; }
     .instructions { padding: 0.8rem 1.5rem; }
-    .pages-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>
 </head>
@@ -345,51 +392,43 @@
 
 <header>
   <h1>ZINE<span>MAKER</span></h1>
-  <p class="subtitle">4-page saddle stitch · half-letter format</p>
+  <p class="subtitle" id="subtitle">saddle stitch · half-letter · 4 pages · 1 sheet</p>
 </header>
 
 <div class="instructions">
-  Upload <strong>4 PNG images</strong> (5.5" × 8.5" @ 300 DPI = <strong>1650 × 2550 px</strong>). Each slot maps to a zine page. Export generates a print-ready PDF with front and back spreads.
+  Upload <strong>PNG images</strong> (5.5" × 8.5" @ 300 DPI = <strong>1650 × 2550 px</strong>) into each page slot.
+  Page count is always a <strong>multiple of 4</strong>. Unfilled slots print as blank white pages.
+  The PDF is automatically imposed for saddle-stitch printing — print double-sided, nest, fold &amp; staple.
 </div>
 
 <main>
-  <div class="grid-label">Page Layout</div>
+  <div class="grid-label">Page Count</div>
 
-  <!-- Diagram -->
-  <div class="layout-diagram">
-    <div class="diagram-title">Print spread layout</div>
-    <div style="display:flex; gap: 2rem; flex-wrap: wrap;">
-      <div>
-        <div style="font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-bottom:.4rem">Sheet Front</div>
-        <div class="spread">
-          <div class="mini-page accent">P2</div>
-          <div class="fold-line"></div>
-          <div class="mini-page accent">P3</div>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-bottom:.4rem">Sheet Back</div>
-        <div class="spread">
-          <div class="mini-page">P1</div>
-          <div class="fold-line"></div>
-          <div class="mini-page">P4</div>
-        </div>
-      </div>
+  <div class="page-controls">
+    <span class="page-count-label">Pages</span>
+    <div class="count-btns">
+      <button class="count-btn" id="btnMinus">−</button>
+      <div class="count-display" id="countDisplay">4</div>
+      <button class="count-btn" id="btnPlus">+</button>
     </div>
-    <div style="font-size:0.6rem;letter-spacing:.05em;opacity:.4;margin-top:.8rem">Fold in half → P1 = front cover, P4 = back cover</div>
+    <span class="page-count-note">Multiples of 4 only &nbsp;·&nbsp; max 40</span>
   </div>
 
-  <!-- Page slots -->
-  <div class="pages-grid" id="pagesGrid">
-    <!-- Slots injected by JS -->
+  <div class="grid-label">Print Imposition</div>
+  <div class="imposition-panel">
+    <div class="diagram-title">How your pages map to printed sheets — front &amp; back</div>
+    <div class="sheets-row" id="impositionDiagram"></div>
+    <div style="font-size:0.58rem;letter-spacing:.05em;opacity:.35;margin-top:1rem">
+      Print each sheet double-sided · flip on short edge · nest all sheets together · fold &amp; staple spine
+    </div>
   </div>
 
-  <!-- Export -->
+  <div class="grid-label">Pages</div>
+  <div class="pages-grid" id="pagesGrid"></div>
+
   <div class="export-section">
     <div class="grid-label">Export</div>
-    <p class="export-info">
-      Exports an 11" × 8.5" landscape PDF with two spreads — one for the front of the sheet (pages 2–3) and one for the back (pages 4–1). Print double-sided, flip on short edge, then fold and trim.
-    </p>
+    <p class="export-info" id="exportInfo"></p>
     <button class="btn-export" id="exportBtn" disabled>
       <span>Export Print PDF</span>
     </button>
@@ -398,77 +437,164 @@
 </main>
 
 <script>
-const PAGE_DEFS = [
-  { num: 1, role: 'Front Cover' },
-  { num: 2, role: 'Inside Left' },
-  { num: 3, role: 'Inside Right' },
-  { num: 4, role: 'Back Cover' },
-];
+// ─── State ───────────────────────────────────────────────────────────────────
+let pageCount = 4;
+let images = new Array(4).fill(null);
 
-const images = [null, null, null, null]; // index 0–3 = pages 1–4
+// ─── Imposition ───────────────────────────────────────────────────────────────
+// For N pages (multiple of 4), there are N/4 physical sheets.
+// Sheet s (0-indexed), pages are 1-indexed:
+//   Front LEFT  = N - 2s
+//   Front RIGHT = 1 + 2s
+//   Back  LEFT  = 2 + 2s
+//   Back  RIGHT = N - 1 - 2s
+function getSheets(N) {
+  const result = [];
+  for (let s = 0; s < N / 4; s++) {
+    result.push({
+      frontLeft:  N - 2 * s,
+      frontRight: 1 + 2 * s,
+      backLeft:   2 + 2 * s,
+      backRight:  N - 1 - 2 * s,
+    });
+  }
+  return result;
+}
 
+// ─── Page role labels ─────────────────────────────────────────────────────────
+function pageRole(i, N) {
+  if (i === 0)     return 'Front Cover';
+  if (i === N - 1) return 'Back Cover';
+  if (i === 1)     return 'Inside Front';
+  if (i === N - 2) return 'Inside Back';
+  return '';
+}
+
+// ─── Build imposition diagram ─────────────────────────────────────────────────
+function buildDiagram() {
+  const container = document.getElementById('impositionDiagram');
+  container.innerHTML = '';
+  const sheets = getSheets(pageCount);
+  sheets.forEach((sh, i) => {
+    const el = document.createElement('div');
+    el.className = 'sheet-diagram';
+    el.innerHTML = `
+      <div class="sheet-side">
+        <div class="sheet-side-label">Sheet ${i+1} · Front</div>
+        <div class="mini-spread">
+          <div class="mini-page accent">${sh.frontLeft}</div>
+          <div class="mini-fold"></div>
+          <div class="mini-page accent">${sh.frontRight}</div>
+        </div>
+      </div>
+      <div class="sheet-side">
+        <div class="sheet-side-label">Sheet ${i+1} · Back</div>
+        <div class="mini-spread">
+          <div class="mini-page">${sh.backLeft}</div>
+          <div class="mini-fold"></div>
+          <div class="mini-page">${sh.backRight}</div>
+        </div>
+      </div>
+      <div class="sheet-num">${i+1} / ${sheets.length}</div>
+    `;
+    container.appendChild(el);
+  });
+}
+
+// ─── Build page slots ─────────────────────────────────────────────────────────
 function buildSlots() {
   const grid = document.getElementById('pagesGrid');
-  PAGE_DEFS.forEach((def, i) => {
+  grid.innerHTML = '';
+  for (let i = 0; i < pageCount; i++) {
+    const role = pageRole(i, pageCount);
     const slot = document.createElement('div');
     slot.className = 'page-slot';
     slot.innerHTML = `
       <div class="slot-header">
-        <span class="page-number">Page ${def.num}</span>
-        <span class="page-role">${def.role}</span>
+        <span class="page-number">Page ${i+1}</span>
+        <span class="page-role">${role}</span>
       </div>
-      <div class="drop-zone" id="zone${i}" tabindex="0" role="button" aria-label="Upload page ${def.num}">
-        <img id="preview${i}" src="" alt="Page ${def.num} preview" />
+      <div class="drop-zone" id="zone${i}" tabindex="0" role="button" aria-label="Upload page ${i+1}">
+        <img id="preview${i}" src="" alt="" />
         <div class="drop-placeholder">
           <span class="plus">+</span>
           <p>Click or drop PNG</p>
         </div>
-        <button class="remove-btn" id="remove${i}" title="Remove image" aria-label="Remove image">✕</button>
+        <button class="remove-btn" id="remove${i}">✕</button>
       </div>
       <input type="file" id="file${i}" accept="image/png" />
     `;
     grid.appendChild(slot);
 
-    const zone = slot.querySelector(`#zone${i}`);
-    const fileInput = slot.querySelector(`#file${i}`);
-    const removeBtn = slot.querySelector(`#remove${i}`);
+    if (images[i]) {
+      document.getElementById(`preview${i}`).src = images[i].dataUrl;
+      document.getElementById(`zone${i}`).classList.add('has-image');
+    }
 
-    zone.addEventListener('click', (e) => {
-      if (e.target === removeBtn || removeBtn.contains(e.target)) return;
-      fileInput.click();
-    });
-    zone.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+    (function(idx) {
+      const zone      = document.getElementById(`zone${idx}`);
+      const fileInput = document.getElementById(`file${idx}`);
+      const removeBtn = document.getElementById(`remove${idx}`);
 
-    zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('drag-over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-    zone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      zone.classList.remove('drag-over');
-      const file = e.dataTransfer.files[0];
-      if (file && file.type === 'image/png') loadImage(i, file);
-    });
-
-    fileInput.addEventListener('change', () => {
-      if (fileInput.files[0]) loadImage(i, fileInput.files[0]);
-    });
-
-    removeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      removeImage(i);
-    });
-  });
+      zone.addEventListener('click', (e) => {
+        if (removeBtn.contains(e.target)) return;
+        fileInput.click();
+      });
+      zone.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') fileInput.click();
+      });
+      zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('drag-over'); });
+      zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('drag-over');
+        const f = e.dataTransfer.files[0];
+        if (f && f.type === 'image/png') loadImage(idx, f);
+      });
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files[0]) loadImage(idx, fileInput.files[0]);
+      });
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeImage(idx);
+      });
+    })(i);
+  }
+  updateExportInfo();
+  checkReady();
 }
 
+// ─── Page count controls ──────────────────────────────────────────────────────
+function setPageCount(n) {
+  n = Math.max(4, Math.min(40, n));
+  // Keep existing images, extend or truncate
+  const next = new Array(n).fill(null);
+  for (let i = 0; i < Math.min(n, pageCount); i++) next[i] = images[i];
+  images = next;
+  pageCount = n;
+
+  document.getElementById('countDisplay').textContent = n;
+  document.getElementById('btnMinus').disabled = n <= 4;
+  document.getElementById('btnPlus').disabled  = n >= 40;
+  document.getElementById('subtitle').textContent =
+    `saddle stitch · half-letter · ${n} pages · ${n/4} sheet${n/4 !== 1 ? 's' : ''}`;
+
+  buildDiagram();
+  buildSlots();
+}
+
+document.getElementById('btnMinus').addEventListener('click', () => setPageCount(pageCount - 4));
+document.getElementById('btnPlus').addEventListener('click',  () => setPageCount(pageCount + 4));
+
+// ─── Image management ─────────────────────────────────────────────────────────
 function loadImage(idx, file) {
   const reader = new FileReader();
   reader.onload = (e) => {
     const img = new Image();
     img.onload = () => {
       images[idx] = { dataUrl: e.target.result, width: img.width, height: img.height };
-      const zone = document.getElementById(`zone${idx}`);
-      const preview = document.getElementById(`preview${idx}`);
-      preview.src = e.target.result;
-      zone.classList.add('has-image');
+      document.getElementById(`preview${idx}`).src = e.target.result;
+      document.getElementById(`zone${idx}`).classList.add('has-image');
       checkReady();
     };
     img.src = e.target.result;
@@ -478,66 +604,94 @@ function loadImage(idx, file) {
 
 function removeImage(idx) {
   images[idx] = null;
-  const zone = document.getElementById(`zone${idx}`);
-  const preview = document.getElementById(`preview${idx}`);
-  preview.src = '';
-  zone.classList.remove('has-image');
+  document.getElementById(`preview${idx}`).src = '';
+  document.getElementById(`zone${idx}`).classList.remove('has-image');
   document.getElementById(`file${idx}`).value = '';
   checkReady();
 }
 
 function checkReady() {
-  const ready = images.every(img => img !== null);
-  document.getElementById('exportBtn').disabled = !ready;
-  const count = images.filter(Boolean).length;
-  document.getElementById('status').textContent = ready ? 'All 4 pages loaded — ready to export.' : `${count} / 4 pages loaded`;
+  const filled = images.filter(Boolean).length;
+  const btn = document.getElementById('exportBtn');
+  btn.disabled = filled === 0;
+  const st = document.getElementById('status');
+  if (filled === pageCount) {
+    st.textContent = `All ${pageCount} pages loaded — ready to export.`;
+  } else if (filled > 0) {
+    st.textContent = `${filled} / ${pageCount} pages loaded — empty slots will print white.`;
+  } else {
+    st.textContent = '';
+  }
+}
+
+function updateExportInfo() {
+  const numSheets = pageCount / 4;
+  document.getElementById('exportInfo').textContent =
+    `Exports a PDF with ${numSheets * 2} page${numSheets > 1 ? 's' : ''} ` +
+    `(${numSheets} physical sheet${numSheets > 1 ? 's' : ''} × 2 sides). ` +
+    `Each PDF page is 11" × 8.5" landscape with two zine half-pages side by side. ` +
+    `Print all sheets double-sided, flip on the short edge, ` +
+    `nest them in order with sheet 1 on the outside, fold, and staple the spine.`;
+}
+
+// ─── PDF Export ───────────────────────────────────────────────────────────────
+// Lazy-create a white blank page canvas
+let _blankDataUrl = null;
+function getBlank() {
+  if (_blankDataUrl) return _blankDataUrl;
+  const c = document.createElement('canvas');
+  c.width = 1650; c.height = 2550;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, 1650, 2550);
+  _blankDataUrl = c.toDataURL('image/png');
+  return _blankDataUrl;
+}
+
+function imgFor(page1indexed) {
+  const img = images[page1indexed - 1];
+  return img ? img.dataUrl : getBlank();
+}
+
+function drawSpread(doc, leftUrl, rightUrl) {
+  doc.setDrawColor(210, 210, 210);
+  doc.setLineDashPattern([0.08, 0.08], 0);
+  doc.line(5.5, 0, 5.5, 8.5);
+  doc.setLineDashPattern([], 0);
+  doc.addImage(leftUrl,  'PNG', 0,   0, 5.5, 8.5, undefined, 'FAST');
+  doc.addImage(rightUrl, 'PNG', 5.5, 0, 5.5, 8.5, undefined, 'FAST');
 }
 
 async function exportPDF() {
+  const btn = document.getElementById('exportBtn');
+  const st  = document.getElementById('status');
+  btn.disabled = true;
+  st.textContent = 'Generating PDF…';
+  await new Promise(r => setTimeout(r, 60));
+
   const { jsPDF } = window.jspdf;
-  const statusEl = document.getElementById('status');
-  statusEl.textContent = 'Generating PDF…';
-
-  // 11" x 8.5" landscape, units in inches
   const doc = new jsPDF({ orientation: 'landscape', unit: 'in', format: [11, 8.5] });
+  const sheets = getSheets(pageCount);
 
-  // SPREAD 1 (Sheet Front): Page 2 (left) | Page 3 (right)
-  // SPREAD 2 (Sheet Back):  Page 1 (right) | Page 4 (left)
-  // When printed double-sided flip on short edge:
-  //   Front: p2 on left half, p3 on right half
-  //   Back:  p4 on left half, p1 on right half
-
-  const spreads = [
-    { left: images[1], right: images[2] },  // front of sheet: p2, p3
-    { left: images[3], right: images[0] },  // back of sheet:  p4, p1
-  ];
-
-  spreads.forEach((spread, si) => {
-    if (si > 0) doc.addPage([11, 8.5], 'landscape');
-
-    // Draw fold line guide (light dashed)
-    doc.setDrawColor(200, 200, 200);
-    doc.setLineDashPattern([0.1, 0.1], 0);
-    doc.line(5.5, 0, 5.5, 8.5);
-    doc.setLineDashPattern([], 0);
-
-    // Left page
-    if (spread.left) {
-      doc.addImage(spread.left.dataUrl, 'PNG', 0, 0, 5.5, 8.5, undefined, 'FAST');
-    }
-    // Right page
-    if (spread.right) {
-      doc.addImage(spread.right.dataUrl, 'PNG', 5.5, 0, 5.5, 8.5, undefined, 'FAST');
-    }
+  sheets.forEach((sh, i) => {
+    if (i > 0) doc.addPage([11, 8.5], 'landscape');
+    // Front side
+    drawSpread(doc, imgFor(sh.frontLeft), imgFor(sh.frontRight));
+    // Back side
+    doc.addPage([11, 8.5], 'landscape');
+    drawSpread(doc, imgFor(sh.backLeft), imgFor(sh.backRight));
   });
 
   doc.save('zine-print-ready.pdf');
-  statusEl.textContent = 'PDF saved! Print double-sided, flip on short edge, fold & trim.';
+  const numSheets = pageCount / 4;
+  st.textContent = `Saved! ${numSheets} sheet${numSheets > 1 ? 's' : ''} · print double-sided · flip short edge · nest · fold · staple.`;
+  btn.disabled = images.filter(Boolean).length === 0;
 }
 
 document.getElementById('exportBtn').addEventListener('click', exportPDF);
 
-buildSlots();
+// ─── Init ─────────────────────────────────────────────────────────────────────
+setPageCount(4);
 </script>
 </body>
 </html>
